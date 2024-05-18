@@ -7,7 +7,7 @@
         <div id="adsMainBox">
             <div class="adsCard" v-for="(ad, index) in ads" :key="index" @click="$router.push(`/advertisement/id/${ad.id}`)">
                 <img src="@/assets/icons/heart.png" class="linkIcon" alt="Like">
-                <img :src="ad.picure_url" alt="Ad's picture" class="adImage">
+                <img :src="domain + ad.picure_url" alt="Ad's picture" class="adImage">
                 <div class="aboutAdBox">
                     <div class="catsBox">
                         <p v-for="(cat, index) in adCategoryFilter('category', ad.category_url)" :key="index">{{ cat.name }}</p>
@@ -51,7 +51,7 @@ export default {
         getAllAds(){
             axios.get(`${this.domain}/ads`)
             .then(response => {
-                this.ads = response.data.data;
+                this.ads = response.data.ads;
             })
             .catch(error => {
                 console.error('Error:', error);
