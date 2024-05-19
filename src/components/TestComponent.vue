@@ -23,7 +23,8 @@
       },
       upload() {
         const formData = new FormData();
-        formData.append("file", this.file);
+        formData.append("id", 1);
+        //formData.append("file", this.file);
         formData.append("title", 'adsmytitle');
         formData.append("price", 'adsmytitle');
         formData.append("currency", 'adsmytitle');
@@ -34,7 +35,7 @@
         formData.append("owner_id", 2);
         formData.append('owenr_type', 'user')
 
-        axios.post('http://127.0.0.1:8000/ads', formData)
+        axios.put('http://127.0.0.1:8000/ads', formData)
           .then(response => {
             console.log(response.data);
           })
